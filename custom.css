@@ -1,0 +1,110 @@
+/* 1. Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #49111c; /* Your deep wine background */
+    color: #f8f4e3;           /* Soft cream text for better contrast */
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 2. Text Styling */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+p {
+    font-size: 1.1rem;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* 3. Image Slider Container (The "Window") */
+main {
+    width: 90vw;
+    max-width: 500px;  /* Limits size on desktop */
+    height: 400px;     /* Height of your slider */
+    position: relative;
+    overflow: hidden;  /* Hides the images that aren't active */
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.2); /* Slight tint for empty state */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* 4. Individual Slides */
+.slide {
+    width: 100% !important;  /* added !important to farce the rules */
+    height: 100% !important;
+    object-fit: contain; /* Keeps images from stretching */
+    position: absolute !important;  /* Stacks images on top of each other */
+    top: 0;
+    left: 0;
+    display: none;       /* Hides all images by default */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* The magic class the JS toggles */
+.slide.active {
+    display: block !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 5. Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    background-color: #49111c;
+    color: #ffffff;            /* Changed text to white for readability */
+    border: 2px solid #631726;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #631726;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 6. Mobile Responsiveness */
+@media (max-width: 600px) {
+    main {
+        height: 300px; /* Shorter box for vertical phones */
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
